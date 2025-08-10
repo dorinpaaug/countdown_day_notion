@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>倒数日 | 2028年8月9日</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: transparent;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, 
+                        Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 15px;
+            color: #333;
+        }
+        
+        .countdown-widget {
+            width: 100%;
+            max-width: 400px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            padding: 30px;
+            text-align: center;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* 顶部装饰线 */
+        .countdown-widget:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(to right, #a8d8ea, #aa96da);
+            border-radius: 12px 12px 0 0;
+        }
+        
+        .title {
+            font-size: 1.6rem;
+            font-weight: 500;
+            color: #5a5a5a;
+            margin-bottom: 8px;
+            letter-spacing: 0.5px;
+        }
+        
+        .target-date {
+            font-size: 1.1rem;
+            color: #7b7b7b;
+            margin-bottom: 25px;
+            font-weight: 400;
+        }
+        
+        .countdown-display {
+            font-size: 4.5rem;
+            font-weight: 300;
+            color: #5f7a82;
+            margin: 15px 0;
+            line-height: 1;
+            transition: all 0.3s ease;
+            letter-spacing: -1px;
+        }
+        
+        .days-text {
+            font-size: 1.3rem;
+            color: #7b7b7b;
+            margin-top: 8px;
+            font-weight: 400;
+        }
+        
+        .progress-container {
+            margin: 30px 0 15px;
+            height: 6px;
+            background: #f0f0f0;
+            border-radius: 3px;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(to right, #a8d8ea, #aa96da);
+            width: 0;
+            transition: width 1s ease;
+            border-radius: 3px;
+        }
+        
+        .current-date {
+            font-size: 0.9rem;
+            color: #999;
+            margin-top: 25px;
+        }
+        
+        /* 装饰元素 */
+        .decoration {
+            position: absolute;
+            opacity: 0.08;
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        .decoration.circle {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 8px solid #a8d8ea;
+            top: -50px;
+            right: -50px;
+        }
+        
+        .decoration.square {
+            width: 70px;
+            height: 70px;
+            border: 5px solid #aa96da;
+            bottom: -30px;
+            left: -30px;
+            transform: rotate(15deg);
+        }
+        
+        /* 响应式调整 */
+        @media (max-width: 500px) {
+            .countdown-widget {
+                padding: 25px 20px;
+            }
+            .title {
+                font-size: 1.4rem;
+            }
+            .target-date {
+                font-size: 1rem;
+                margin-bottom: 20px;
+            }
+            .countdown-display {
+                font-size: 3.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="countdown-widget">
+        <div class="decoration circle"></div>
+        <div class="decoration square"></div>
+        
+        <div class="title">倒数日</div>
+        <div class="target-date">距离 2028年8月9日 还有</div>
+        
+        <div class="countdown-display" id="days">0</div>
+        <div class="days-text">天</div>
+        
+        <div class="progress-container">
+            <div class="progress-fill" id="progress-fill"></div>
+        </div>
+        
+        <div class="current-date" id="current-date"></div>
+    </div>
+
+    <script>
+        // 目标日期：2028年8月9日
+        const targetDate = new Date('2028-08-09T00:00:00');
+        
+        // 更新倒计时
+        function updateCountdown() {
+            const now = new Date();
+            const timeRemaining = targetDate - now;
+            
+            // 计算天数
+            const days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
+            
+            // 更新显示
+            document.getElementById('days').textContent = days;
+            
+            // 更新进度条
+            const startDate = new Date('2025-08-10T00:00:00');
+            const totalDays = Math.ceil((targetDate - startDate) / (1000 * 60 * 60 * 24));
+            const progress = ((totalDays - days) / totalDays * 100).toFixed(1);
+            document.getElementById('progress-fill').style.width = `${progress}%`;
+            
+            // 更新当前日期
+            const options = { year: 'numeric', month: 'long', day: 'numeric' };
+            document.getElementById('current-date').textContent = 
+                `今天是 ${now.toLocaleDateString('zh-CN', options)}`;
+        }
+        
+        // 初始化
+        updateCountdown();
+        
+        // 每天更新一次
+        setInterval(updateCountdown, 1000 * 60 * 60);
+    </script>
+</body>
+</html>
