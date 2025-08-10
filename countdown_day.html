@@ -4,353 +4,198 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>2028年8月9日倒数日</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         
         body {
-            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #1a2a6c);
-            background-size: 400% 400%;
-            animation: gradientBG 15s ease infinite;
-            color: #fff;
+            background: linear-gradient(to bottom, #f9f7f7, #dbe2ef);
+            color: #3f3f44;
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
             padding: 20px;
-        }
-        
-        @keyframes gradientBG {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+            font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
+            line-height: 1.6;
         }
         
         .container {
             width: 100%;
-            max-width: 1200px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        
-        header {
+            max-width: 800px;
+            background: rgba(255, 255, 255, 0.92);
+            border-radius: 18px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            padding: 60px 40px;
             text-align: center;
-            margin-bottom: 40px;
-            animation: fadeIn 1s ease;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.5);
         }
         
-        h1 {
-            font-size: 3.5rem;
-            margin-bottom: 10px;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
-            background: linear-gradient(45deg, #ff9a9e, #fad0c4, #fad0c4, #a18cd1);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+        .container:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(to right, #a5dee5, #e0f9b5);
+        }
+        
+        .title {
+            font-size: 2.8rem;
+            font-weight: 300;
+            margin-bottom: 20px;
+            color: #5b5b5b;
+            letter-spacing: 1px;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+        
+        .title:after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 25%;
+            right: 25%;
+            height: 2px;
+            background: linear-gradient(to right, transparent, #a5dee5, transparent);
         }
         
         .target-date {
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             font-weight: 300;
-            margin: 15px 0;
-            letter-spacing: 1px;
+            color: #7d7d7d;
+            margin-bottom: 50px;
+            letter-spacing: 0.5px;
         }
         
-        .countdown-container {
-            display: flex;
-            justify-content: center;
-            gap: 25px;
+        .countdown-display {
+            font-size: 10rem;
+            font-weight: 300;
+            color: #5f7a82;
             margin: 30px 0;
-            flex-wrap: wrap;
-        }
-        
-        .countdown-box {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 15px;
-            padding: 25px 15px;
-            min-width: 140px;
-            text-align: center;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            border: 1px solid rgba(255, 255, 255, 0.15);
+            line-height: 1;
             transition: transform 0.3s ease;
-        }
-        
-        .countdown-box:hover {
-            transform: translateY(-10px);
-            background: rgba(255, 255, 255, 0.15);
-        }
-        
-        .countdown-value {
-            font-size: 3.5rem;
-            font-weight: 700;
-            margin-bottom: 5px;
-            color: #fff;
-            text-shadow: 0 0 10px rgba(255,255,255,0.5);
-        }
-        
-        .countdown-label {
-            font-size: 1.2rem;
-            color: rgba(255, 255, 255, 0.8);
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-        
-        .progress-container {
-            width: 100%;
-            max-width: 800px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
-            padding: 20px;
-            margin: 30px 0;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-        }
-        
-        .progress-title {
-            text-align: center;
-            font-size: 1.5rem;
-            margin-bottom: 20px;
-            color: #fff;
-        }
-        
-        .progress-bar {
-            width: 100%;
-            height: 25px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 12px;
-            overflow: hidden;
+            text-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
             position: relative;
         }
         
-        .progress-fill {
-            height: 100%;
-            background: linear-gradient(90deg, #ff9a9e, #fad0c4, #a18cd1);
-            border-radius: 12px;
-            width: 0;
-            transition: width 1s ease;
+        .days-text {
+            font-size: 2.2rem;
+            font-weight: 300;
+            color: #7d7d7d;
+            margin-top: 15px;
+            letter-spacing: 2px;
         }
         
-        .calendar-container {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            margin-top: 40px;
-            flex-wrap: wrap;
+        .info {
+            margin-top: 50px;
+            padding-top: 25px;
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
         }
         
-        .calendar {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 15px;
-            padding: 25px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            width: 350px;
-        }
-        
-        .calendar-header {
-            text-align: center;
-            margin-bottom: 20px;
-            font-size: 1.8rem;
-            color: #fff;
-        }
-        
-        .calendar-grid {
-            display: grid;
-            grid-template-columns: repeat(7, 1fr);
-            gap: 8px;
-        }
-        
-        .calendar-cell {
-            height: 40px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            border-radius: 8px;
-            font-weight: 500;
-            background: rgba(255, 255, 255, 0.05);
-        }
-        
-        .calendar-cell.day-name {
-            background: transparent;
-            color: rgba(255, 255, 255, 0.7);
-            font-weight: 600;
-        }
-        
-        .calendar-cell.target {
-            background: linear-gradient(45deg, #ff9a9e, #fad0c4);
-            color: #1a2a6c;
-            font-weight: 700;
-            animation: pulse 2s infinite;
-            box-shadow: 0 0 15px rgba(255, 154, 158, 0.5);
-        }
-        
-        .current-date {
-            background: rgba(255, 255, 255, 0.2);
-        }
-        
-        .info-panel {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 15px;
-            padding: 25px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            width: 350px;
-            text-align: center;
-        }
-        
-        .info-panel h2 {
-            margin-bottom: 20px;
-            color: #fff;
-            font-size: 1.8rem;
-        }
-        
-        .info-item {
-            margin: 15px 0;
+        .info p {
             font-size: 1.1rem;
-            color: rgba(255, 255, 255, 0.9);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            color: #7d7d7d;
+            line-height: 1.8;
+            max-width: 600px;
+            margin: 0 auto;
         }
         
-        .info-value {
-            font-weight: 600;
-            color: #fff;
+        .decoration {
+            position: absolute;
+            opacity: 0.08;
+            z-index: 0;
         }
         
-        .quote {
-            text-align: center;
-            max-width: 800px;
-            margin: 40px auto;
-            font-style: italic;
-            font-size: 1.2rem;
-            color: rgba(255, 255, 255, 0.8);
-            padding: 20px;
-            border-radius: 15px;
-            background: rgba(0, 0, 0, 0.1);
-            backdrop-filter: blur(5px);
+        .decoration.circle {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 15px solid #a5dee5;
+            top: -75px;
+            right: -75px;
         }
         
-        footer {
-            margin-top: 40px;
-            text-align: center;
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 1rem;
+        .decoration.square {
+            width: 100px;
+            height: 100px;
+            border: 10px solid #e0f9b5;
+            bottom: -50px;
+            left: -50px;
+            transform: rotate(15deg);
         }
         
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
+        .date-display {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            font-size: 0.9rem;
+            color: #aaa;
         }
         
         @media (max-width: 768px) {
-            h1 { font-size: 2.5rem; }
-            .target-date { font-size: 1.4rem; }
-            .countdown-box { min-width: 110px; padding: 20px 10px; }
-            .countdown-value { font-size: 2.5rem; }
-            .countdown-label { font-size: 1rem; }
-            .calendar-container { flex-direction: column; align-items: center; }
-            .calendar, .info-panel { width: 100%; max-width: 400px; }
+            .container {
+                padding: 40px 25px;
+            }
+            .title {
+                font-size: 2.2rem;
+            }
+            .target-date {
+                font-size: 1.3rem;
+                margin-bottom: 40px;
+            }
+            .countdown-display {
+                font-size: 7rem;
+            }
+            .days-text {
+                font-size: 1.8rem;
+            }
         }
         
         @media (max-width: 480px) {
-            .countdown-container { gap: 15px; }
-            .countdown-box { min-width: 80px; padding: 15px 5px; }
-            .countdown-value { font-size: 2rem; }
-            .countdown-label { font-size: 0.8rem; }
-            .calendar { padding: 15px; }
+            .container {
+                padding: 30px 20px;
+            }
+            .title {
+                font-size: 1.8rem;
+            }
+            .target-date {
+                font-size: 1.1rem;
+                margin-bottom: 30px;
+            }
+            .countdown-display {
+                font-size: 5rem;
+            }
+            .days-text {
+                font-size: 1.5rem;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <header>
-            <h1><i class="far fa-calendar-alt"></i> 倒数日</h1>
-            <div class="target-date">距离 2028年8月9日 还有</div>
-        </header>
+        <div class="decoration circle"></div>
+        <div class="decoration square"></div>
         
-        <div class="countdown-container">
-            <div class="countdown-box">
-                <div class="countdown-value" id="days">0</div>
-                <div class="countdown-label">天</div>
-            </div>
-            <div class="countdown-box">
-                <div class="countdown-value" id="hours">0</div>
-                <div class="countdown-label">小时</div>
-            </div>
-            <div class="countdown-box">
-                <div class="countdown-value" id="minutes">0</div>
-                <div class="countdown-label">分钟</div>
-            </div>
-            <div class="countdown-box">
-                <div class="countdown-value" id="seconds">0</div>
-                <div class="countdown-label">秒</div>
-            </div>
+        <h1 class="title">倒数日</h1>
+        <div class="target-date">距离 2028年8月9日 还有</div>
+        
+        <div class="countdown-display" id="days">0</div>
+        <div class="days-text">天</div>
+        
+        <div class="info">
+            <p>每一天都是新的开始，每一刻都值得珍惜</p>
         </div>
         
-        <div class="progress-container">
-            <div class="progress-title">目标日倒计时进度</div>
-            <div class="progress-bar">
-                <div class="progress-fill" id="progress-fill"></div>
-            </div>
-        </div>
-        
-        <div class="calendar-container">
-            <div class="calendar">
-                <div class="calendar-header">2028年8月</div>
-                <div class="calendar-grid" id="calendar-grid">
-                    <!-- Calendar will be generated by JavaScript -->
-                </div>
-            </div>
-            
-            <div class="info-panel">
-                <h2><i class="fas fa-info-circle"></i> 倒计时信息</h2>
-                <div class="info-item">
-                    <span>目标日期：</span>
-                    <span class="info-value">2028年8月9日</span>
-                </div>
-                <div class="info-item">
-                    <span>今天是：</span>
-                    <span class="info-value" id="current-date">2025年8月10日</span>
-                </div>
-                <div class="info-item">
-                    <span>总天数：</span>
-                    <span class="info-value" id="total-days">0</span>
-                </div>
-                <div class="info-item">
-                    <span>剩余天数：</span>
-                    <span class="info-value" id="remaining-days">0</span>
-                </div>
-                <div class="info-item">
-                    <span>已完成：</span>
-                    <span class="info-value" id="completed">0%</span>
-                </div>
-            </div>
-        </div>
-        
-        <div class="quote">
-            <i class="fas fa-quote-left"></i> 时间不会等待任何人，但我们可以把握每一刻，让每一秒都充满意义 <i class="fas fa-quote-right"></i>
-        </div>
-        
-        <footer>
-            <p>© 2025 倒数日计时器 | 距离2028年8月9日还有 <span id="footer-days">0</span> 天</p>
-        </footer>
+        <div class="date-display" id="current-date">2025年8月10日</div>
     </div>
 
     <script>
@@ -362,93 +207,22 @@
             const now = new Date();
             const timeRemaining = targetDate - now;
             
-            // 计算天、小时、分钟、秒
+            // 计算天数
             const days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
             
             // 更新显示
             document.getElementById('days').textContent = days;
-            document.getElementById('hours').textContent = hours;
-            document.getElementById('minutes').textContent = minutes;
-            document.getElementById('seconds').textContent = seconds;
-            document.getElementById('footer-days').textContent = days;
-            
-            // 计算总天数和剩余天数
-            const startDate = new Date('2025-08-10T00:00:00');
-            const totalDays = Math.ceil((targetDate - startDate) / (1000 * 60 * 60 * 24));
-            const remainingDays = days;
-            
-            document.getElementById('total-days').textContent = totalDays;
-            document.getElementById('remaining-days').textContent = remainingDays;
-            
-            // 计算进度百分比
-            const progress = ((totalDays - remainingDays) / totalDays * 100).toFixed(1);
-            document.getElementById('completed').textContent = `${progress}%`;
-            
-            // 更新进度条
-            document.getElementById('progress-fill').style.width = `${progress}%`;
             
             // 更新当前日期
             const options = { year: 'numeric', month: 'long', day: 'numeric' };
             document.getElementById('current-date').textContent = now.toLocaleDateString('zh-CN', options);
         }
         
-        // 生成日历
-        function generateCalendar() {
-            const calendarGrid = document.getElementById('calendar-grid');
-            calendarGrid.innerHTML = '';
-            
-            // 添加星期标题
-            const daysOfWeek = ['日', '一', '二', '三', '四', '五', '六'];
-            daysOfWeek.forEach(day => {
-                const cell = document.createElement('div');
-                cell.classList.add('calendar-cell', 'day-name');
-                cell.textContent = day;
-                calendarGrid.appendChild(cell);
-            });
-            
-            // 计算2028年8月的第一天是星期几
-            const firstDay = new Date(2028, 7, 1).getDay(); // 月份从0开始，7表示8月
-            
-            // 添加空白单元格
-            for (let i = 0; i < firstDay; i++) {
-                const cell = document.createElement('div');
-                cell.classList.add('calendar-cell');
-                calendarGrid.appendChild(cell);
-            }
-            
-            // 添加日期单元格
-            const daysInMonth = 31; // 8月有31天
-            const now = new Date();
-            
-            for (let day = 1; day <= daysInMonth; day++) {
-                const cell = document.createElement('div');
-                cell.classList.add('calendar-cell');
-                cell.textContent = day;
-                
-                // 标记目标日期（2028年8月9日）
-                if (day === 9) {
-                    cell.classList.add('target');
-                    cell.innerHTML = `<span>${day}</span><br><small>目标日</small>`;
-                }
-                
-                // 标记当前日期（如果是2028年8月）
-                if (now.getFullYear() === 2028 && now.getMonth() === 7 && now.getDate() === day) {
-                    cell.classList.add('current-date');
-                }
-                
-                calendarGrid.appendChild(cell);
-            }
-        }
-        
         // 初始化
         updateCountdown();
-        generateCalendar();
         
-        // 每秒更新一次
-        setInterval(updateCountdown, 1000);
+        // 每天更新一次
+        setInterval(updateCountdown, 1000 * 60 * 60);
     </script>
 </body>
 </html>
